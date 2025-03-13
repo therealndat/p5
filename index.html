@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Preview</title>
+    <style>
+        #image {
+            width: 400px;
+            height: 300px;
+            background-color: lightgray;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .preview {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="image">Hover over an image below to display here.</div>
+
+    <img class="preview" src="img/bend_in_the_road.png" alt="Bend in the road" onmouseover="upDate(this)" onmouseout="undo()">
+    <img class="preview" src="img/mist_over_huron_river.jpg" alt="Mist over huron river" onmouseover="upDate(this)" onmouseout="undo()">
+    <img class="preview" src="img/munising.jpg" alt="Munising" onmouseover="upDate(this)" onmouseout="undo()">
+
+    <script>
+        function upDate(previewPic) {
+            console.log("Event triggered!");
+            console.log("Image source:", previewPic.src);
+            console.log("Image alt:", previewPic.alt);
+
+            let imageDiv = document.getElementById("image");
+            imageDiv.style.backgroundImage = `url('${previewPic.src}')`;
+            imageDiv.innerHTML = previewPic.alt;
+        }
+
+        function undo() {
+            let imageDiv = document.getElementById("image");
+            imageDiv.style.backgroundImage = "url('')";
+            imageDiv.innerHTML = "Hover over an image below to display here.";
+        }
+    </script>
+
+</body>
+</html>
